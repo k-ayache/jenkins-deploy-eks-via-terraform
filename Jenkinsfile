@@ -2,14 +2,14 @@ pipeline {
 
    parameters {
     choice(name: 'action', choices: 'create\ndestroy', description: 'Create/update or destroy the eks cluster.')
-    string(name: 'cluster', defaultValue : 'demo', description: "EKS cluster name;eg demo creates cluster named eks-demo.")
-    string(name: 'vpc_network', defaultValue : '10.0', description: "First 2 octets of vpc network; eg 10.0")
+    string(name: 'cluster', defaultValue : 'dev', description: "EKS cluster name;eg demo creates cluster named eks-demo.")
+    string(name: 'vpc_network', defaultValue : '11.0', description: "First 2 octets of vpc network; eg 10.0")
     string(name: 'num_subnets', defaultValue : '3', description: "Number of vpc subnets/AZs.")
     string(name: 'instance_type', defaultValue : 'm4.large', description: "k8s worker node instance type.")
     string(name: 'num_workers', defaultValue : '3', description: "k8s number of worker instances.")
     string(name: 'api_ingress_cidrs', defaultValue : '0.0.0.0/0', description: "k8s api ingress cidrs; space delimited list.")
-    string(name: 'credential', defaultValue : 'jenkins', description: "Jenkins credential that provides the AWS access key and secret.")
-    string(name: 'region', defaultValue : 'eu-west-1', description: "AWS region.")
+    string(name: 'credential', defaultValue : 'aws', description: "Jenkins credential that provides the AWS access key and secret.")
+    string(name: 'region', defaultValue : 'us-west-2', description: "AWS region.")
   }
 
   options {
@@ -78,6 +78,7 @@ pipeline {
             secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
 
             sh """
+              sleep 30
               terraform apply -input=false ${plan}
             """
           }
