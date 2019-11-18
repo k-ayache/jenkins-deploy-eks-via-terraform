@@ -4,12 +4,12 @@
 
 variable "aws_region" {
   description = "The AWS region to create things in."
-  default     = "eu-west-1"
+  default     = "us-west-2"
 }
 
 variable "cluster-name" {
   description = "EKS cluster name."
-  default = "demo"
+  default = "dev"
   type    = "string"
 }
 
@@ -19,13 +19,13 @@ variable "cluster-name" {
 
 variable "vpc-network" {
   description = "vpc cidr network portion; eg 10.0 for 10.0.0.0/16."
-  default = "10.0"
+  default = "10.3"
   type    = "string"
 }
 
 variable "vpc-subnets" {
   description = "vpc number of subnets/az's."
-  default = "3"
+  default = "2"
   type    = "string"
 }
 
@@ -37,8 +37,8 @@ variable "inst-type" {
 
 variable "num-workers" {
   description = "Number of eks worker instances to deploy."
-#  default = "3"
-  default = "1"
+#  default = "2"
+  default = "2"
   type    = "string"
 }
 
