@@ -159,9 +159,9 @@ pipeline {
                 pwd
               """
             }
-//            dir ("/home/jenkins/agent/workspace/terraform_eks_pipeline")
-//            echo "yes"
-//            add_kubeconfig()
+            dir ("/home/jenkins/agent/workspace/terraform_eks_pipeline")
+            echo "yes"
+            add_kubeconfig()
           }
         }
       }
